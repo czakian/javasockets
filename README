@@ -1,0 +1,35 @@
+This is a simple client-server socket that adds whatever number you input to the previous number stored in the Data class
+The client then receives the updated Data class with the numbers added to it. 
+
+This is meant as a demonstration of how to send objects through a socket. I used this to figure out how to send
+objects for my racing game, but it might be helpful to someone else, so enjoy. :)
+
+To run the code do the following in a terminal:
+
+-------------------------------------------------------------------------------------
+[czakian@cszakian javasockets]$ make
+javac  DataServer.java
+javac  DataClient.java
+[czakian@cszakian javasockets]$ make server
+java DataServer
+server listening on port 5015
+0.0.0.0/0.0.0.0:5015
+Waiting for connections.
+^Z
+[3]+  Stopped                 make server =======>>>do this using ctrl z
+[czakian@cszakian javasockets]$ bg
+[3]+ make server &
+[czakian@cszakian javasockets]$ make client
+java DataClient
+accepted a connection from: /127.0.0.1
+Waiting for connections.
+10 <<=== this is the output after you input an integer into the joption pane that will pop up when you start the client
+35
+---------------------------------------------------------------------------------------
+
+Finally, be sure to bring the server to the foreground and close it,
+otherwise it will just sit there listening on port 5015.
+
+Currently the socket is just listening on the local host on port 5015, and is hard coded. you can easily change this
+to suit your own needs. Be sure to change both the client and the server side to reflect the port and ip changes. 
+
